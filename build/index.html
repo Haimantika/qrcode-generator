@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code generator</title>
+    <style>
+        #spinner {
+          display: none;
+        }
+      </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen bg-slate-50 dark:bg-black dark:text-white">
+    <header class="bg-cyan-600 text-white sticky top-0 z-10">
+        <section class="max-w-4xl mx-auto p-4 flex justify-between items-center">
+            <h1 class="text-3xl font-medium">
+               <a href="#home">🔍 QuickScan</a> 
+            </h1>
+        </section>
+        <img src="img/spinner.svg" alt="" />
+    </header>
+    <main class="max-w-4xl mx-auto">
+        <section id="home" class="flex flex-col-reverse justify-center sm:flex-row p-6 items-center gap-8 mb-12">
+            <article class="sm:w-1/2">
+                <h2 class="max-w-md text-4xl font-bold text-center sm:text-5xl sm:text-left text-slate-900 dark:text-white">
+                    Quick Scan.<span class="text-indigo-700 dark:text-indigo-300"> Big Plans.</span> Your QR Code Companion.
+                </h2>
+                <p class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400">
+                    Enter your URL below to generate and save the QR code.
+                </p>
+            </article>
+            <img class="w-1/2" src="./img/qr.png" alt="QR icon">
+        </section>
+        <section class="p-6 my-12">
+            <div class="container mx-auto px-4 py-4">
+              <div class="flex items-center">
+                <input type="text" class="form-input mt-1 block w-1/2 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 py-2" placeholder="Enter text here" id="qrText">
+                <button class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700" onclick="generateQR()">Generate QR</button>
+            </div>
+            </div>
+            
+        </section>
+        <section class="p-6 my-12">
+            <div id="imgBox">
+              <img src ="" id="qrImage">
+            </div>
+            <button id="downloadBtn" class="hidden mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Save QR</button>
+        </section>
+        <script>
+          let imgBox = document.getElementById("imgBox");
+          let qrImage = document.getElementById("qrImage");
+          let qrText = document.getElementById("qrText");
+
+          function generateQR(){
+            qrImage.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrText.value;
+            // Display the download button
+          var downloadBtn = document.getElementById('downloadBtn');
+          downloadBtn.classList.remove('hidden');
+    }
+          
+        </script>
+       <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            var img = document.getElementById('qrImage');
+    
+            // Check if the image source is not empty
+            if (img.src) {
+                // Create an anchor element
+                var a = document.createElement('a');
+                a.href = img.src;
+                a.download = 'qr-code.png'; // Set a default file name for the download
+    
+                // Append the anchor to the body, click it, and then remove it
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } else {
+                // Optionally handle the case where the image source is empty
+                alert('No image to download!');
+            }
+        });
+    </script>
+    
+      
+    </main>
+</body>
+</html>
