@@ -1,4 +1,3 @@
-# qrcode-generator
 # QR Code Generator App
 
 ## Description
