@@ -36,9 +36,12 @@ Contributions to the QR Code Generator app are welcome. Please follow these step
 3. Make your changes and commit them (`git commit -am 'Add some feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
+6. Please follow the [Contributing Guide](https://github.com/Haimantika/qrcode-generator/blob/main/CONTRIBUTING) before making any changes.
 
 ## Contact
 For any questions or suggestions, please reach out to me [@Haimantika](https://twitter.com/HaimantikaM).
+
+
 
 
 
