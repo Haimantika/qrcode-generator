@@ -51,10 +51,10 @@
 
         <section class="">
             <div class="container mx-auto px-4">
-              <div class="flex items-center">
+              <form class="flex items-center" onsubmit="generateQR(); return false">
                 <input type="url" class="form-input block w-1/2 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 px-2 py-2 text-black" placeholder="Enter URL" id="qrText">
-                <button class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700" onclick="generateQR()">Generate QR</button>
-            </div>
+                <button type="submit" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">Generate QR</button>
+              </form>
             </div>
             
         </section>
@@ -75,7 +75,6 @@
         
           
           function generateQR(){ 
-
             qrImage.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrText.value;
            
 
